@@ -1,0 +1,16 @@
+{
+  "name": "claude-code-o-mat",
+  "version": "1.0.0",
+  "description": "What Claude Code coding type are you? A fun 2-minute quiz.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "quiz": "node src/index.js"
+  },
+  "keywords": ["claude-code", "quiz", "cli", "linkedin"],
+  "license": "MIT",
+  "dependencies": {
+    "@inquirer/select": "^4.2.0",
+    "chalk": "^5.4.1"
+  }
+}
