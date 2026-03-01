@@ -6,22 +6,22 @@
 }
 
 :root {
-  --bg: #0f172a;
-  --surface: #1e293b;
-  --surface-hover: #334155;
-  --surface-selected: #164e63;
-  --border: #334155;
-  --border-accent: #06b6d4;
-  --text: #f1f5f9;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --accent: #06b6d4;
-  --accent-glow: rgba(6, 182, 212, 0.15);
-  --green: #10b981;
-  --red: #ef4444;
-  --blue: #3b82f6;
-  --amber: #f59e0b;
-  --purple: #a855f7;
+  --bg: #1a1a19;
+  --surface: #252523;
+  --surface-hover: #302f2d;
+  --surface-selected: #3d2e24;
+  --border: #3a3936;
+  --border-accent: #d97757;
+  --text: #faf9f5;
+  --text-muted: #b0aea5;
+  --text-dim: #7a786f;
+  --accent: #d97757;
+  --accent-glow: rgba(217, 119, 87, 0.15);
+  --green: #788c5d;
+  --red: #c45a4f;
+  --blue: #6a9bcc;
+  --amber: #d97757;
+  --purple: #6a9bcc;
   --radius: 12px;
   --max-width: 640px;
 }
@@ -81,9 +81,10 @@ body {
 }
 
 h1 {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 2.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), var(--purple));
+  background: linear-gradient(135deg, var(--accent), #e8956a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -111,7 +112,7 @@ h1 {
 
 /* ═══ Buttons ═══ */
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent), #0891b2);
+  background: linear-gradient(135deg, var(--accent), #c4603e);
   color: white;
   border: none;
   padding: 14px 40px;
@@ -125,7 +126,7 @@ h1 {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+  box-shadow: 0 8px 25px rgba(217, 119, 87, 0.3);
 }
 
 .btn-primary:active {
@@ -162,7 +163,7 @@ h1 {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--purple));
+  background: linear-gradient(90deg, var(--accent), #e8956a);
   transition: width 0.4s ease;
   width: 0%;
 }
@@ -187,6 +188,7 @@ h1 {
 }
 
 .question-text {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.35rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -260,7 +262,7 @@ h1 {
 .spinner {
   width: 48px;
   height: 48px;
-  border: 3px solid var(--surface);
+  border: 3px solid var(--border);
   border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -307,9 +309,10 @@ h1 {
 }
 
 .result-name {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.75rem;
   font-weight: 800;
-  color: var(--amber);
+  color: var(--accent);
   margin-bottom: 0.5rem;
 }
 
@@ -350,7 +353,7 @@ h1 {
 }
 
 .detail-row:nth-child(1) strong { color: var(--green); }
-.detail-row:nth-child(2) strong { color: var(--red); }
+.detail-row:nth-child(2) strong { color: var(--accent); }
 .detail-row:nth-child(3) strong { color: var(--blue); }
 
 .detail-row p {
@@ -380,9 +383,9 @@ h1 {
 }
 
 .badge-chip {
-  background: rgba(168, 85, 247, 0.15);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  color: var(--purple);
+  background: rgba(106, 155, 204, 0.15);
+  border: 1px solid rgba(106, 155, 204, 0.3);
+  color: var(--blue);
   padding: 6px 14px;
   border-radius: 50px;
   font-size: 0.85rem;
