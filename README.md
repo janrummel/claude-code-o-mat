@@ -1,6 +1,8 @@
 # Claude Code-o-mat
 
-**What Claude Code coding type are you?** A fun 2-minute CLI quiz that reveals your coding patterns with AI — and gives you a shareable LinkedIn snippet.
+**What Claude Code coding type are you?** A fun 2-minute quiz that reveals your coding patterns with AI — and gives you a shareable LinkedIn snippet.
+
+**👉 [Play in your browser](https://janrummel.github.io/claude-code-o-mat)** — no install needed.
 
 Not a psychological test. Not a diagnosis. Just a playful self-reflection game about how you use Claude Code.
 
@@ -93,7 +95,7 @@ That's it. No accounts, no API keys, no data sent anywhere.
   🏷️ 🦉 Night Owl · 🧶 Parallel Juggler
 
   What's YOUR Claude Code type? Try it:
-  → github.com/janrummel/claude-code-o-mat
+  → janrummel.github.io/claude-code-o-mat
 
   #ClaudeCode #CodingWithAI #DevTools
   ────────────────────────────────────────────────────
