@@ -97,7 +97,7 @@ That's it. No accounts, no API keys, no data sent anywhere.
   What's YOUR Claude Code type? Try it:
   → janrummel.github.io/claude-code-o-mat
 
-  #ClaudeCode #CodingWithAI #DevTools
+  #ClaudeCode #ClaudeCodeOmat #CodingWithAI
   ────────────────────────────────────────────────────
 
   Thanks for playing! 🎉

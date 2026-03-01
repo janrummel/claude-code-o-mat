@@ -168,7 +168,7 @@ export function generateLinkedInSnippet(result) {
 
   snippet += `\nWhat's YOUR Claude Code type? Try it:\n`;
   snippet += `\u2192 janrummel.github.io/claude-code-o-mat\n\n`;
-  snippet += `#ClaudeCode #CodingWithAI #DevTools`;
+  snippet += `#ClaudeCode #ClaudeCodeOmat #CodingWithAI`;
 
   return snippet;
 }

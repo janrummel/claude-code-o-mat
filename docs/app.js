@@ -458,7 +458,7 @@ function generateSnippet(result) {
 
   s += `\nWhat's YOUR Claude Code type? Try it:\n`;
   s += `→ janrummel.github.io/claude-code-o-mat\n\n`;
-  s += `#ClaudeCode #CodingWithAI #DevTools`;
+  s += `#ClaudeCode #ClaudeCodeOmat #CodingWithAI`;
 
   return s;
 }
