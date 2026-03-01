@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "quiz-web",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "cd /Users/janrummel/Projects/claude-code-o-mat && python3 -m http.server 3847 -d docs"],
+      "port": 3847
+    }
+  ]
+}

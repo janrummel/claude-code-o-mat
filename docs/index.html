@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code-o-mat — What coding type are you?</title>
+  <meta name="description" content="What Claude Code coding type are you? Take this fun 2-minute quiz and find out!">
+  <meta property="og:title" content="Claude Code-o-mat">
+  <meta property="og:description" content="What Claude Code coding type are you? A fun 2-minute quiz about your AI coding patterns.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://janrummel.github.io/claude-code-o-mat">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ═══ Landing Screen ═══ -->
+    <div id="landing" class="screen active">
+      <div class="landing-content">
+        <div class="logo">🤖</div>
+        <h1>Claude Code-o-mat</h1>
+        <p class="subtitle">What Claude Code coding type are you?</p>
+        <p class="meta">13 questions · ~2 min · zero data collected</p>
+        <button id="start-btn" class="btn-primary" onclick="startQuiz()">Start Quiz</button>
+        <p class="disclaimer">Not a psychological test. Just a playful self-reflection game.</p>
+      </div>
+    </div>
+
+    <!-- ═══ Quiz Screen ═══ -->
+    <div id="quiz" class="screen">
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+      <div class="quiz-container">
+        <p id="progress-text" class="progress-text"></p>
+        <h2 id="question-text" class="question-text"></h2>
+        <div id="options-container" class="options-container"></div>
+      </div>
+    </div>
+
+    <!-- ═══ Analyzing Screen ═══ -->
+    <div id="analyzing" class="screen">
+      <div class="analyzing-content">
+        <div class="spinner"></div>
+        <p>Analyzing your coding patterns...</p>
+      </div>
+    </div>
+
+    <!-- ═══ Result Screen ═══ -->
+    <div id="result" class="screen">
+      <div class="result-container">
+        <div class="result-card">
+          <p class="result-label">You are</p>
+          <div id="result-emoji" class="result-emoji"></div>
+          <h2 id="result-name" class="result-name"></h2>
+          <p id="result-oneliner" class="result-oneliner"></p>
+
+          <div class="result-details">
+            <div class="detail-row">
+              <span class="detail-icon">💪</span>
+              <div>
+                <strong>Superpower</strong>
+                <p id="result-superpower"></p>
+              </div>
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">🐉</span>
+              <div>
+                <strong>Boss fight</strong>
+                <p id="result-bossfight"></p>
+              </div>
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">🛠️</span>
+              <div>
+                <strong>Fix</strong>
+                <p id="result-fix"></p>
+              </div>
+            </div>
+          </div>
+
+          <div id="badges-section" class="badges-section" style="display:none">
+            <p class="badges-label">🏷️ Badges</p>
+            <div id="badges-list" class="badges-list"></div>
+          </div>
+
+          <div id="runner-up" class="runner-up" style="display:none">
+            <p>Runner-up: <span id="runner-up-text"></span></p>
+          </div>
+        </div>
+
+        <div id="why-section" class="why-section">
+          <h3>Why this type?</h3>
+          <ul id="why-list"></ul>
+          <p class="reflection">🌱 This is a playful self-reflection, not a diagnosis. Patterns can shift — and noticing them is the first step to choosing them.</p>
+        </div>
+
+        <div class="snippet-section">
+          <h3>📋 Share on LinkedIn</h3>
+          <pre id="snippet-text" class="snippet-text"></pre>
+          <button id="copy-btn" class="btn-primary" onclick="copySnippet()">Copy to clipboard</button>
+        </div>
+
+        <button class="btn-secondary" onclick="retakeQuiz()">↻ Retake Quiz</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <a href="https://github.com/janrummel/claude-code-o-mat" target="_blank" rel="noopener">GitHub</a>
+    <span>·</span>
+    <span>No data collected. Ever.</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
