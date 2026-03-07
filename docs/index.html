@@ -28,10 +28,14 @@
     <!-- ═══ Landing Screen ═══ -->
     <div id="landing" class="screen active">
       <div class="landing-content">
+        <div class="lang-toggle">
+          <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+          <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+        </div>
         <div class="logo">🎰</div>
         <h1>Claude Code-o-mat</h1>
         <p class="subtitle">What Claude Code coding type are you?</p>
-        <p class="meta">13 questions · ~2 min · zero data collected</p>
+        <p class="meta">10 questions · ~90 sec · zero data collected</p>
         <button id="start-btn" class="btn-primary" onclick="startQuiz()">Start Quiz</button>
         <p class="disclaimer">Not a psychological test. Just a playful self-reflection game.</p>
       </div>

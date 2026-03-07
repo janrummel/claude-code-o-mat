@@ -4,7 +4,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org)
 [![Play Online](https://img.shields.io/badge/Play-Online-blue.svg)](https://janrummel.github.io/claude-code-o-mat)
 
-**What Claude Code coding type are you?** A fun 2-minute quiz that reveals your coding patterns with AI — and gives you a shareable LinkedIn snippet.
+**What Claude Code coding type are you?** A fun 90-second quiz that reveals your coding patterns with AI — available in English and German, with a shareable LinkedIn snippet.
 
 Not a psychological test. Not a diagnosis. Just a playful self-reflection game about how you use Claude Code.
 
@@ -51,7 +51,7 @@ No accounts, no API keys, no data sent anywhere.
   ┌───────────────────────────────────────────┐
   │   🤖  CLAUDE CODE-O-MAT               │
   │   What Claude Code coding type are you? │
-  │   13 questions · ~2 min · zero data sent  │
+  │   10 questions · ~90 sec · zero data sent  │
   └───────────────────────────────────────────┘
 
   ✔ Analyzing your coding patterns...
@@ -114,7 +114,7 @@ No accounts, no API keys, no data sent anywhere.
 ## Design Rationale
 
 ### Scoring
-Each of the 13 questions has 4 answer options. Each option awards 1–3 points to one or two types. The type with the highest total score wins. Ties are broken by definition order. This direct-scoring approach produces coherent results because each answer maps to recognizable behavior patterns.
+Each of the 10 questions has 4 answer options. Each option awards 1–3 points to one or two types. The type with the highest total score wins. Ties are broken by definition order. This direct-scoring approach produces coherent results because each answer maps to recognizable behavior patterns.
 
 ### Questions
 Questions probe 4 behavioral axes without naming them:

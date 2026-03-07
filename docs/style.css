@@ -67,6 +67,38 @@ body {
 
 .landing-content {
   max-width: var(--max-width);
+  position: relative;
+}
+
+/* ═══ Language toggle ═══ */
+.lang-toggle {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.lang-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.lang-btn:hover:not(.active) {
+  border-color: var(--border-accent);
+  color: var(--text);
 }
 
 .logo {
