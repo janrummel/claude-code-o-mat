@@ -1,21 +1,19 @@
-import { types, typeOrder } from './types.js';
-import { badges, collectBadges } from './badges.js';
-import { questions } from './questions.js';
-
 /**
  * Calculate the quiz result from collected answers.
  * @param {Array<{questionId: string, optionIndex: number}>} answers
+ * @param {object} locale - The active locale ({ questions, types, typeOrder, badges, badgeTriggers })
  * @returns {{ typeId: string, type: object, earnedBadges: object[], whyBullets: string[] }}
  */
-export function calculateResult(answers) {
+export function calculateResult(answers, locale) {
+  const { questions, types, typeOrder, badges, badgeTriggers } = locale;
+
   // 1. Tally scores per type
   const scores = {};
   for (const id of typeOrder) {
     scores[id] = 0;
   }
 
-  // Track per-question contributions for "why" explanation
-  const contributions = []; // { questionId, questionText, typeId, points }
+  const contributions = [];
 
   for (const { questionId, optionIndex } of answers) {
     const question = questions.find((q) => q.id === questionId);
@@ -47,15 +45,18 @@ export function calculateResult(answers) {
   }
 
   // 3. Collect badges
-  const answerMap = {};
+  const earnedBadges = [];
+  const seen = new Set();
   for (const { questionId, optionIndex } of answers) {
-    answerMap[questionId] = optionIndex;
+    const triggers = badgeTriggers[questionId];
+    if (triggers && triggers[optionIndex] !== undefined) {
+      const badgeId = triggers[optionIndex];
+      if (!seen.has(badgeId) && badges[badgeId]) {
+        seen.add(badgeId);
+        earnedBadges.push(badges[badgeId]);
+      }
+    }
   }
-  const earnedBadgeIds = collectBadges(answerMap);
-  const earnedBadges = earnedBadgeIds
-    .map((id) => badges[id])
-    .filter(Boolean)
-    .slice(0, 3); // max 3 badges
 
   // 4. Generate "why" bullets — top 3 contributions to winning type
   const winnerContributions = contributions
@@ -67,7 +68,7 @@ export function calculateResult(answers) {
     (c) => `${trimText(c.answerText, 55)} (${trimText(c.questionText.replace(/\?$/, ''), 40)})`
   );
 
-  // 5. Runner-up type for flavor
+  // 5. Runner-up type
   let runnerUpId = null;
   let runnerUpScore = -1;
   for (const id of typeOrder) {
@@ -81,7 +82,7 @@ export function calculateResult(answers) {
     typeId: winningTypeId,
     type: types[winningTypeId],
     scores,
-    earnedBadges,
+    earnedBadges: earnedBadges.slice(0, 3),
     whyBullets,
     runnerUpId,
     runnerUpType: runnerUpId ? types[runnerUpId] : null,

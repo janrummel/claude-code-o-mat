@@ -2,17 +2,33 @@
 
 import select from '@inquirer/select';
 import chalk from 'chalk';
-import { questions } from './questions.js';
+import { locale as en } from './locales/en.js';
+import { locale as de } from './locales/de.js';
 import { calculateResult } from './scoring.js';
 import { displayResult, displayLinkedInSnippet } from './output.js';
 
+// ─── Language selection ──────────────────────────────────────
+async function pickLanguage() {
+  try {
+    return await select({
+      message: 'Language / Sprache',
+      choices: [
+        { name: 'English', value: 'en' },
+        { name: 'Deutsch', value: 'de' },
+      ],
+    });
+  } catch {
+    process.exit(0);
+  }
+}
+
 // ─── Welcome ────────────────────────────────────────────────
-function showWelcome() {
+function showWelcome(ui) {
   console.log('');
   console.log(chalk.cyan('  \u250C\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510'));
   console.log(chalk.cyan('  \u2502') + chalk.bold.white('   \u{1F916}  CLAUDE CODE-O-MAT               ') + chalk.cyan('\u2502'));
-  console.log(chalk.cyan('  \u2502') + chalk.dim('   What Claude Code coding type are you?') + chalk.cyan(' \u2502'));
-  console.log(chalk.cyan('  \u2502') + chalk.dim('   13 questions \u00B7 ~2 min \u00B7 zero data sent  ') + chalk.cyan('\u2502'));
+  console.log(chalk.cyan('  \u2502') + chalk.dim(`   ${ui.quizSubtitle}`) + chalk.cyan(' \u2502'));
+  console.log(chalk.cyan('  \u2502') + chalk.dim(`   ${ui.questionCount}`) + chalk.cyan('\u2502'));
   console.log(chalk.cyan('  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518'));
   console.log('');
 }
@@ -38,7 +54,11 @@ function showSpinner(text, durationMs) {
 
 // ─── Main quiz loop ─────────────────────────────────────────
 async function runQuiz() {
-  showWelcome();
+  const langCode = await pickLanguage();
+  const locale = langCode === 'de' ? de : en;
+  const { ui, questions } = locale;
+
+  showWelcome(ui);
 
   const answers = [];
   const total = questions.length;
@@ -58,27 +78,22 @@ async function runQuiz() {
 
       answers.push({ questionId: q.id, optionIndex });
     } catch {
-      // User pressed Ctrl+C
       console.log('');
-      console.log(
-        chalk.yellow('  \u{1F44B} No worries! You\'re probably a Window Starter anyway.')
-      );
+      console.log(chalk.yellow(`  ${ui.ctrlC}`));
       console.log('');
       process.exit(0);
     }
   }
 
-  // Dramatic pause
   console.log('');
-  await showSpinner('Analyzing your coding patterns...', 1500);
+  await showSpinner(ui.analyzing, 1500);
 
-  // Calculate and display result
-  const result = calculateResult(answers);
+  const result = calculateResult(answers, locale);
 
-  displayResult(result);
-  displayLinkedInSnippet(result);
+  displayResult(result, ui);
+  displayLinkedInSnippet(result, ui);
 
-  console.log(chalk.dim('  Thanks for playing! \u{1F389}\n'));
+  console.log(chalk.dim(`  ${ui.thanks}\n`));
 }
 
 // ─── Entry ──────────────────────────────────────────────────

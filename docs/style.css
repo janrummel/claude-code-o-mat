@@ -67,6 +67,38 @@ body {
 
 .landing-content {
   max-width: var(--max-width);
+  position: relative;
+}
+
+/* ═══ Language toggle ═══ */
+.lang-toggle {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.lang-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.lang-btn:hover:not(.active) {
+  border-color: var(--border-accent);
+  color: var(--text);
 }
 
 .logo {
@@ -469,6 +501,54 @@ h1 {
   font-family: inherit;
   max-height: 300px;
   overflow-y: auto;
+}
+
+/* ═══ Back button ═══ */
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+  margin-top: 1rem;
+  transition: color 0.2s ease;
+}
+
+.btn-back:hover {
+  color: var(--text);
+}
+
+/* ═══ Snippet actions ═══ */
+.snippet-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.snippet-actions .btn-primary {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+}
+
+.btn-linkedin {
+  background: #0a66c2;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  flex: 1;
+  min-width: 140px;
+}
+
+.btn-linkedin:hover {
+  background: #004182;
 }
 
 /* ═══ Footer ═══ */

@@ -16,7 +16,6 @@ function center(text, width) {
   return ' '.repeat(left) + text + ' '.repeat(right);
 }
 
-// Simple ANSI strip for length calculation
 function stripAnsi(str) {
   return str.replace(/\x1b\[[0-9;]*m/g, '');
 }
@@ -60,7 +59,7 @@ function wrapText(text, maxWidth) {
 /**
  * Display the quiz result in a beautiful terminal card.
  */
-export function displayResult(result) {
+export function displayResult(result, ui) {
   const { type, earnedBadges, whyBullets, runnerUpType } = result;
   const innerWidth = BOX_WIDTH - 4;
 
@@ -68,15 +67,13 @@ export function displayResult(result) {
   lines.push('');
   lines.push(boxTop());
   lines.push(boxLine(center(chalk.bold.cyan('\u{1F916}  CLAUDE CODE-O-MAT  \u{1F916}'), innerWidth)));
-  lines.push(boxLine(center(chalk.dim('Your Result'), innerWidth)));
+  lines.push(boxLine(center(chalk.dim(ui.yourResult), innerWidth)));
   lines.push(boxDivider());
   lines.push(emptyLine());
 
-  // Type name
   lines.push(boxLine(center(chalk.bold.yellow(`${type.emoji}  ${type.name.toUpperCase()}`), innerWidth)));
   lines.push(emptyLine());
 
-  // One-liner (don't double-wrap in quotes if it already has them)
   const displayOneLiner = type.oneLiner.startsWith('"') ? type.oneLiner : `"${type.oneLiner}"`;
   const oneLineWrapped = wrapText(displayOneLiner, innerWidth);
   for (const line of oneLineWrapped) {
@@ -84,40 +81,35 @@ export function displayResult(result) {
   }
   lines.push(emptyLine());
 
-  // Superpower
   const spLines = wrapText(type.superpower, innerWidth - 4);
-  lines.push(boxLine(chalk.green('\u{1F4AA} Superpower:')));
+  lines.push(boxLine(chalk.green(`\u{1F4AA} ${ui.superpower}:`)));
   for (const line of spLines) {
     lines.push(boxLine('   ' + line));
   }
   lines.push(emptyLine());
 
-  // Boss fight
   const bfLines = wrapText(type.bossFight, innerWidth - 4);
-  lines.push(boxLine(chalk.red('\u{1F409} Boss fight:')));
+  lines.push(boxLine(chalk.red(`\u{1F409} ${ui.bossFight}:`)));
   for (const line of bfLines) {
     lines.push(boxLine('   ' + line));
   }
   lines.push(emptyLine());
 
-  // Fix
   const fixLines = wrapText(type.fix, innerWidth - 4);
-  lines.push(boxLine(chalk.blue('\u{1F6E0}\uFE0F  Fix:')));
+  lines.push(boxLine(chalk.blue(`\u{1F6E0}\uFE0F  ${ui.fix}:`)));
   for (const line of fixLines) {
     lines.push(boxLine('   ' + line));
   }
 
-  // Badges
   if (earnedBadges.length > 0) {
     lines.push(emptyLine());
     const badgeStr = earnedBadges.map((b) => `${b.emoji} ${b.name}`).join('  \u00B7  ');
-    lines.push(boxLine(chalk.magenta('\u{1F3F7}\uFE0F  Badges: ') + badgeStr));
+    lines.push(boxLine(chalk.magenta(`\u{1F3F7}\uFE0F  ${ui.badges}: `) + badgeStr));
   }
 
-  // Runner-up
   if (runnerUpType) {
     lines.push(emptyLine());
-    lines.push(boxLine(chalk.dim(`Runner-up: ${runnerUpType.emoji} ${runnerUpType.name}`)));
+    lines.push(boxLine(chalk.dim(`${ui.runnerUp}: ${runnerUpType.emoji} ${runnerUpType.name}`)));
   }
 
   lines.push(emptyLine());
@@ -125,10 +117,9 @@ export function displayResult(result) {
 
   console.log(lines.join('\n'));
 
-  // Why bullets
   if (whyBullets.length > 0) {
     console.log('');
-    console.log(chalk.bold('  Why this type?'));
+    console.log(chalk.bold(`  ${ui.whyThisType}`));
     for (const bullet of whyBullets) {
       const wrapped = wrapText(bullet, 56);
       console.log(chalk.dim('  \u2022 ') + wrapped[0]);
@@ -138,35 +129,29 @@ export function displayResult(result) {
     }
   }
 
-  // Gentle reflection note
   console.log('');
-  console.log(
-    chalk.dim(
-      '  \u{1F331} This is a playful self-reflection, not a diagnosis. Patterns can\n' +
-      '  shift \u2014 and noticing them is the first step to choosing them.'
-    )
-  );
+  console.log(chalk.dim(`  ${ui.reflection}`));
 }
 
 /**
  * Generate a copy-pasteable LinkedIn snippet.
  */
-export function generateLinkedInSnippet(result) {
+export function generateLinkedInSnippet(result, ui) {
   const { type, earnedBadges } = result;
 
-  let snippet = `\u{1F916} I just took the Claude Code-o-mat quiz!\n\n`;
+  let snippet = `${ui.linkedinIntro}\n\n`;
   const displayOneLiner = type.oneLiner.startsWith('"') ? type.oneLiner : `"${type.oneLiner}"`;
-  snippet += `I'm ${addArticle(type.name)} \u2014 ${displayOneLiner}\n\n`;
-  snippet += `\u{1F4AA} Superpower: ${type.superpower}\n`;
-  snippet += `\u{1F409} Boss fight: ${type.bossFight}\n`;
-  snippet += `\u{1F6E0}\uFE0F Fix: ${type.fix}\n`;
+  snippet += `${ui.linkedinIm} ${addArticle(type.name)} \u2014 ${displayOneLiner}\n\n`;
+  snippet += `\u{1F4AA} ${ui.superpower}: ${type.superpower}\n`;
+  snippet += `\u{1F409} ${ui.bossFight}: ${type.bossFight}\n`;
+  snippet += `\u{1F6E0}\uFE0F ${ui.fix}: ${type.fix}\n`;
 
   if (earnedBadges.length > 0) {
     const badgeStr = earnedBadges.map((b) => `${b.emoji} ${b.name}`).join(' \u00B7 ');
     snippet += `\u{1F3F7}\uFE0F ${badgeStr}\n`;
   }
 
-  snippet += `\nWhat's YOUR Claude Code type? Try it:\n`;
+  snippet += `\n${ui.linkedinCta}\n`;
   snippet += `\u2192 janrummel.github.io/claude-code-o-mat\n\n`;
   snippet += `#ClaudeCode #ClaudeCodeOmat #CodingWithAI`;
 
@@ -174,7 +159,7 @@ export function generateLinkedInSnippet(result) {
 }
 
 function addArticle(name) {
-  if (name.startsWith('The ')) return name;
+  if (name.startsWith('The ') || name.startsWith('Der ')) return name;
   const firstChar = name[0];
   const article = 'AEIOUaeiou'.includes(firstChar) ? 'an' : 'a';
   return `${article} ${name}`;
@@ -183,11 +168,11 @@ function addArticle(name) {
 /**
  * Print the LinkedIn snippet with framing.
  */
-export function displayLinkedInSnippet(result) {
-  const snippet = generateLinkedInSnippet(result);
+export function displayLinkedInSnippet(result, ui) {
+  const snippet = generateLinkedInSnippet(result, ui);
 
   console.log('');
-  console.log(chalk.bold.cyan('  \u{1F4CB} Your LinkedIn snippet (copy & paste):'));
+  console.log(chalk.bold.cyan(`  ${ui.linkedinSnippetTitle}`));
   console.log(chalk.dim('  ' + '\u2500'.repeat(56)));
   for (const line of snippet.split('\n')) {
     console.log('  ' + line);
