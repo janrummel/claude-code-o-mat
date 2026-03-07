@@ -323,6 +323,7 @@ function startQuiz() {
   answers = [];
   show('quiz');
   renderQuestion(0);
+  updateBackButton();
 }
 
 function renderQuestion(index) {
@@ -367,6 +368,7 @@ function selectAnswer(questionId, optionIndex, card) {
 
       setTimeout(() => {
         renderQuestion(currentQuestion);
+        updateBackButton();
         quizContainer.classList.remove('transitioning');
         quizContainer.classList.add('entering');
 
@@ -481,4 +483,22 @@ function retakeQuiz() {
   currentQuestion = 0;
   answers = [];
   show('landing');
+}
+
+function shareOnLinkedIn() {
+  const url = encodeURIComponent('https://janrummel.github.io/claude-code-o-mat');
+  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'noopener');
+}
+
+function goBack() {
+  if (currentQuestion <= 0) return;
+  answers.pop();
+  currentQuestion--;
+  renderQuestion(currentQuestion);
+  updateBackButton();
+}
+
+function updateBackButton() {
+  const btn = $('#back-btn');
+  if (btn) btn.style.display = currentQuestion > 0 ? '' : 'none';
 }

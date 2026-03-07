@@ -471,6 +471,54 @@ h1 {
   overflow-y: auto;
 }
 
+/* ═══ Back button ═══ */
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+  margin-top: 1rem;
+  transition: color 0.2s ease;
+}
+
+.btn-back:hover {
+  color: var(--text);
+}
+
+/* ═══ Snippet actions ═══ */
+.snippet-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.snippet-actions .btn-primary {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+}
+
+.btn-linkedin {
+  background: #0a66c2;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  flex: 1;
+  min-width: 140px;
+}
+
+.btn-linkedin:hover {
+  background: #004182;
+}
+
 /* ═══ Footer ═══ */
 .footer {
   text-align: center;

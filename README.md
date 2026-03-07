@@ -1,19 +1,27 @@
 # Claude Code-o-mat
 
-**What Claude Code coding type are you?** A fun 2-minute quiz that reveals your coding patterns with AI — and gives you a shareable LinkedIn snippet.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org)
+[![Play Online](https://img.shields.io/badge/Play-Online-blue.svg)](https://janrummel.github.io/claude-code-o-mat)
 
-**👉 [Play in your browser](https://janrummel.github.io/claude-code-o-mat)** — no install needed.
+**What Claude Code coding type are you?** A fun 2-minute quiz that reveals your coding patterns with AI — and gives you a shareable LinkedIn snippet.
 
 Not a psychological test. Not a diagnosis. Just a playful self-reflection game about how you use Claude Code.
 
-## Quick Start
+## Play
+
+### Browser (recommended)
+
+**👉 [janrummel.github.io/claude-code-o-mat](https://janrummel.github.io/claude-code-o-mat)** — no install, zero dependencies.
+
+### CLI
 
 ```bash
 npm install
 npm run quiz
 ```
 
-That's it. No accounts, no API keys, no data sent anywhere.
+No accounts, no API keys, no data sent anywhere.
 
 ## What You Get
 
