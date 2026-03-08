@@ -63,16 +63,16 @@ const LOCALES = {
         { text: 'Ask "Are you sure about this approach?" at least once.', scores: { secondOpinion: 3 } },
       ]},
       { id: 'claudeMd', text: 'Your CLAUDE.md file is...', options: [
-        { text: 'My what now?', scores: { windowStarter: 3 } },
+        { text: 'Exists, but I barely look at it.', scores: { windowStarter: 3 } },
         { text: 'A masterpiece. Constraints, conventions, examples — all curated.', scores: { promptPerfectionist: 3 } },
         { text: 'Practical — project structure, key rules, test commands.', scores: { batchBuilder: 2, guardrailEngineer: 1 } },
         { text: 'A living document — I update it mid-session when I learn something.', scores: { systemArchitect: 2, sprintCaptain: 1 } },
       ]},
       { id: 'context', text: 'When it comes to giving Claude context, you...', options: [
-        { text: 'Paste the whole README + file tree. Context is king.', scores: { windowStarter: 3 } },
-        { text: 'Keep it minimal. Claude should figure it out.', scores: { autoAccept: 3 } },
-        { text: 'Carefully curate context per task — relevant files only.', scores: { systemArchitect: 2, promptPerfectionist: 1 } },
-        { text: 'Let the conversation grow naturally. Context accumulates.', scores: { windowStarter: 2, batchBuilder: 1 } },
+        { text: 'Dump the whole file tree + README. More context = better answers.', scores: { windowStarter: 3 } },
+        { text: 'Keep it minimal. Claude can read the codebase itself.', scores: { autoAccept: 3 } },
+        { text: 'Use @-references to feed exactly the right files per task.', scores: { systemArchitect: 2, promptPerfectionist: 1 } },
+        { text: 'Let the conversation grow naturally. /compact when it gets long.', scores: { windowStarter: 2, batchBuilder: 1 } },
       ]},
       { id: 'uncertainty', text: 'Claude gives an answer you\'re not 100% sure about. You...', options: [
         { text: '"Can you explain your reasoning step by step?"', scores: { secondOpinion: 3 } },
@@ -164,16 +164,16 @@ const LOCALES = {
         { text: 'Fragst mindestens einmal: "Bist du sicher bei diesem Ansatz?"', scores: { secondOpinion: 3 } },
       ]},
       { id: 'claudeMd', text: 'Deine CLAUDE.md Datei ist...', options: [
-        { text: 'Meine was?', scores: { windowStarter: 3 } },
+        { text: 'Existiert, aber ich schau da kaum rein.', scores: { windowStarter: 3 } },
         { text: 'Ein Meisterwerk. Constraints, Konventionen, Beispiele — alles kuratiert.', scores: { promptPerfectionist: 3 } },
         { text: 'Praktisch — Projektstruktur, wichtige Regeln, Test-Commands.', scores: { batchBuilder: 2, guardrailEngineer: 1 } },
         { text: 'Ein lebendes Dokument — ich aktualisiere es mitten in der Session.', scores: { systemArchitect: 2, sprintCaptain: 1 } },
       ]},
       { id: 'context', text: 'Wenn es darum geht, Claude Kontext zu geben...', options: [
-        { text: 'Die komplette README + Dateibaum einfügen. Kontext ist King.', scores: { windowStarter: 3 } },
-        { text: 'Minimal halten. Claude soll sich das selbst erschließen.', scores: { autoAccept: 3 } },
-        { text: 'Pro Task sorgfältig kuratieren — nur relevante Dateien.', scores: { systemArchitect: 2, promptPerfectionist: 1 } },
-        { text: 'Die Konversation natürlich wachsen lassen. Kontext baut sich auf.', scores: { windowStarter: 2, batchBuilder: 1 } },
+        { text: 'Den ganzen Dateibaum + README reinwerfen. Mehr Kontext = bessere Antworten.', scores: { windowStarter: 3 } },
+        { text: 'Minimal halten. Claude kann die Codebase selbst lesen.', scores: { autoAccept: 3 } },
+        { text: '@-Referenzen nutzen, um genau die richtigen Dateien pro Task zu liefern.', scores: { systemArchitect: 2, promptPerfectionist: 1 } },
+        { text: 'Die Konversation natürlich wachsen lassen. /compact wenns lang wird.', scores: { windowStarter: 2, batchBuilder: 1 } },
       ]},
       { id: 'uncertainty', text: 'Claude gibt eine Antwort, bei der du dir nicht 100% sicher bist. Du...', options: [
         { text: '"Kannst du deine Argumentation Schritt für Schritt erklären?"', scores: { secondOpinion: 3 } },

@@ -173,7 +173,7 @@ export const locale = {
       id: 'claudeMd',
       text: 'Deine CLAUDE.md Datei ist...',
       options: [
-        { text: 'Meine was?', scores: { windowStarter: 3 } },
+        { text: 'Existiert, aber ich schau da kaum rein.', scores: { windowStarter: 3 } },
         { text: 'Ein Meisterwerk. Constraints, Konventionen, Beispiele \u2014 alles kuratiert.', scores: { promptPerfectionist: 3 } },
         { text: 'Praktisch \u2014 Projektstruktur, wichtige Regeln, Test-Commands.', scores: { batchBuilder: 2, guardrailEngineer: 1 } },
         { text: 'Ein lebendes Dokument \u2014 ich aktualisiere es mitten in der Session.', scores: { systemArchitect: 2, sprintCaptain: 1 } },
@@ -183,10 +183,10 @@ export const locale = {
       id: 'context',
       text: 'Wenn es darum geht, Claude Kontext zu geben...',
       options: [
-        { text: 'Die komplette README + Dateibaum einf\u00FCgen. Kontext ist King.', scores: { windowStarter: 3 } },
-        { text: 'Minimal halten. Claude soll sich das selbst erschlie\u00DFen.', scores: { autoAccept: 3 } },
-        { text: 'Pro Task sorgf\u00E4ltig kuratieren \u2014 nur relevante Dateien.', scores: { systemArchitect: 2, promptPerfectionist: 1 } },
-        { text: 'Die Konversation nat\u00FCrlich wachsen lassen. Kontext baut sich auf.', scores: { windowStarter: 2, batchBuilder: 1 } },
+        { text: 'Den ganzen Dateibaum + README reinwerfen. Mehr Kontext = bessere Antworten.', scores: { windowStarter: 3 } },
+        { text: 'Minimal halten. Claude kann die Codebase selbst lesen.', scores: { autoAccept: 3 } },
+        { text: '@-Referenzen nutzen, um genau die richtigen Dateien pro Task zu liefern.', scores: { systemArchitect: 2, promptPerfectionist: 1 } },
+        { text: 'Die Konversation nat\u00FCrlich wachsen lassen. /compact wenns lang wird.', scores: { windowStarter: 2, batchBuilder: 1 } },
       ],
     },
     {
